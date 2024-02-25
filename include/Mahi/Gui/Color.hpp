@@ -25,6 +25,17 @@ namespace gui {
 /// Alias for NVGColor, a float RGBA representation
 typedef NVGcolor Color;
 
+// ImVec4E: 4D vector used to store clipping rectangles, colors etc. [Compile-time configurable type]
+struct ImVec4E {
+    float x, y, z, w;
+    constexpr ImVec4E() : x(0.0f), y(0.0f), z(0.0f), w(0.0f) {}
+    constexpr ImVec4E(float _x, float _y, float _z, float _w) : x(_x), y(_y), z(_z), w(_w) {}
+#ifdef IM_VEC4_CLASS_EXTRA
+    IM_VEC4_CLASS_EXTRA  // Define additional constructors and implicit cast operators in imconfig.h
+                         // to convert back and forth between your math types and ImVec4.
+#endif
+};
+
 /// HSV Color POD type representation
 struct HSV {
     float h = 1.0f;  // angle in degrees [0 to 1]
@@ -45,6 +56,8 @@ HSV to_hsv(std::string hex);
 Color with_alpha(Color color, float a);
 /// Returns the luminance of a Color
 float luminance(const Color& color);
+/// Convert from Color to ImVec4E
+ImVec4E to_imvec4(const Color& color1);
 /// Returns a random Color
 Color random_color();
 /// Returns a random color between two colors in RGB space

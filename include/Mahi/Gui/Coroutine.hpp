@@ -30,7 +30,7 @@ class Application;
 /// Yield instruction which waits until a key is pressed (use GLFW enums)
 struct YieldKey : public util::YieldInstruction {
     YieldKey(int key) : m_key(key) {}
-    bool is_over() override { return ImGui::IsKeyPressed(m_key); }
+    bool is_over() override { return ImGui::IsKeyPressed((ImGuiKey)m_key); }
 
 private:
     int m_key;

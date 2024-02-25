@@ -8,12 +8,6 @@ cmake_minimum_required(VERSION 3.13.0)
 # USER OPTIONS
 #===============================================================================
 
-if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
-    option(MAHI_GUI_EXAMPLES   "Turn ON to build mahi-gui example(s)" ON)
-else()
-    option(MAHI_GUI_EXAMPLES   "Turn ON to build mahi-gui example(s)" OFF)
-endif()
-
 option(MAHI_GUI_NATIVE_DIAGS   "Turn ON to build native file dialog support" ON)
 
 #===============================================================================
@@ -186,13 +180,6 @@ endif()
 if(CMAKE_SYSTEM MATCHES "Linux")
     # https://techoverflow.net/2019/04/17/how-to-fix-gcc-undefined-reference-to-std-experimental-filesystem/
     target_link_libraries(gui PUBLIC GL stdc++fs)
-endif()
-#===============================================================================
-# EXAMPLE EXECUTABLES
-#===============================================================================
-
-if (MAHI_GUI_EXAMPLES)
-    add_subdirectory(examples)
 endif()
 
 #===============================================================================

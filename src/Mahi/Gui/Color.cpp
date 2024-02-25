@@ -2,7 +2,8 @@
 #include <Mahi/Util/Random.hpp>
 #include <cstdio>
 #include <iostream>
-#include <imgui.h>
+
+#include "imgui.h"
 
 namespace mahi {
 namespace gui {
@@ -53,6 +54,15 @@ Color with_alpha(Color color, float a) {
 float luminance(const Color& color) {
     return (0.299f * color.r + 0.587f * color.g + 0.114f * color.b);
 }
+
+ImVec4E to_imvec4(const Color& color1) {
+    ImVec4E color;
+    color.x = color1.r;
+    color.y = color1.g;
+    color.z = color1.b;
+    color.w = color1.a;
+    return color;
+} 
 
 Color random_color() {
     Color color;
