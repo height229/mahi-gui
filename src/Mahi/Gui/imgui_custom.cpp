@@ -38,23 +38,6 @@ void HoverTooltip(const char *tip, float delay) {
     }
 }
 
-void BeginDisabled(bool disabled, float alpha) {
-    if (disabled) {
-        ImGui::PushItemFlag(ImGuiItemFlags_Disabled, true);
-        ImGui::PushStyleVar(ImGuiStyleVar_Alpha, ImGui::GetStyle().Alpha * alpha);
-        g_BeginDisabledActive = true;
-    }
-}
-
-/// Ends a disabled section
-void EndDisabled() {
-    if (g_BeginDisabledActive) {
-        ImGui::PopItemFlag();
-        ImGui::PopStyleVar();
-        g_BeginDisabledActive = false;
-    }
-}
-
 bool ToggleButton(const char *label, bool *toggled, const ImVec2 &size) {
     bool pressed = false;
     bool dim = !*toggled;

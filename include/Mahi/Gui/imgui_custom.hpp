@@ -34,10 +34,6 @@ void DisableDocking();
 bool BeginFixed(const char* name, const ImVec2& pos, const ImVec2& size, ImGuiWindowFlags flags = 0);
 /// Shows a tooltip when an item is hovered for longer than delay.
 void HoverTooltip(const char* tip, float delay = 1.0f);
-/// Begins an disabled section. If disbled is true, everything until EndDisabled will be visible but disabled
-void BeginDisabled(bool disabled = true, float alpha = 0.25f);
-/// Ends a disabled section.
-void EndDisabled();
 /// A button that acts like a toggle, dimming itself when disabled.
 bool ToggleButton(const char* label, bool* toggled, const ImVec2& size = ImVec2(0,0));
 /// A regular button with a color.
